@@ -1,11 +1,12 @@
 import webbrowser
 import argparse
 import yaml
+import pathlib
 
 
-
+cur_path = pathlib.Path(__file__).parent.resolve()
 try:
-    with open('config.yaml') as file:
+    with open(str(cur_path)+'/config.yaml') as file:
         config = yaml.safe_load(file)
 except FileNotFoundError:
     print("missing config file")
