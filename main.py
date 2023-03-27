@@ -12,7 +12,7 @@ except FileNotFoundError:
 
 urls = config['urls']
 
-parser = argparse.ArgumentParser(prog='Web Search From CLI', usage='%(prog)s [query][options]')
+parser = argparse.ArgumentParser(prog='Web Search CLI', usage='%(prog)s [query][options]')
 parser.add_argument('query', nargs='+')
 parser.add_argument('-e', '--engine', default='google', help="Specify search engine")
 parser.add_argument('-b', '--browser', default='safari', help="Specify browser")

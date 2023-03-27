@@ -5,3 +5,18 @@ Simply download the code, modify `config.yaml` (if needed, skip if you are using
 ```
 alias websearch="$PATH$/websearch-cli/main.py"
 ```
+## Example
+```
+usage: Web Search CLI [query][options]
+
+positional arguments:
+  query
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -e ENGINE, --engine ENGINE
+                        Specify search engine
+  -b BROWSER, --browser BROWSER
+                        Specify browser
+  -v, --version         show program's version number and exit
+  ```
