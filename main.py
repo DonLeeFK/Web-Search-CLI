@@ -14,8 +14,8 @@ urls = config['urls']
 
 parser = argparse.ArgumentParser(prog='Web Search CLI', usage='%(prog)s [query][options]')
 parser.add_argument('query', nargs='+')
-parser.add_argument('-e', '--engine', default='google', help="Specify search engine")
-parser.add_argument('-b', '--browser', default='safari', help="Specify browser")
+parser.add_argument('-e', '--engine', default='google', help="specify search engine")
+parser.add_argument('-b', '--browser', default='safari', help="specify browser")
 parser.add_argument('-v', '--version', action='version', version='%(prog)s 1.0 by DonLeeFK')
 args = parser.parse_args()
 
