@@ -38,17 +38,19 @@ def query_url():
 def search_console():
     query = ' '.join(args.query)
     num = args.number
-    if args.engine.lower() in urls.keys():
-        url = urls[args.engine.lower()]
+    engine = args.engine.lower()
+    if engine in urls.keys():
+        url = urls[engine]
     else:
         print(f"{args.engine} not supported, revert back to Google")
         url = urls['google']
+        engine = 'google'
         
     q_url = f"{url}{query}"
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
     search_results = []
-    if args.engine.lower() == 'google':
+    if engine == 'google':
         num = args.number+5
         q_url += f"&num={num}"
         res = requests.get(q_url, headers=headers)
@@ -60,22 +62,20 @@ def search_console():
             link = item.select_one(".yuRUbf a")["href"]
             title = item.select_one(".yuRUbf a h3").text
             search_results.append((title, link))
-    if args.engine.lower() == 'bing':
+    if engine == 'bing':
         num = args.number+5
         q_url += f"&count={num}"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
+        #print(soup)
+        print(soup.select(".b_algo"))
         for i, item in enumerate(soup.select(".b_algo")):
             if i == args.number:
                 break
             link = item.select_one("a")["href"]
-            t = item.select_one("h2")
-            if t is not None:
-                title = t.text
-            else:
-                title = t
+            title = item.select_one("h2")
             search_results.append((title, link))
-    if args.engine.lower() == 'duckduckgo':#fyi duckduckgo do not support num of results
+    if engine == 'duckduckgo':#fyi duckduckgo do not support num of results
         q_url = f"https://duckduckgo.com/html/?q={query}&kl=us-en"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
@@ -86,14 +86,14 @@ def search_console():
             title = item.select_one("a").text
             search_results.append((title, link))
     
-    if args.engine.lower() == 'baidu':
+    if engine == 'baidu':
         num = args.number+5
         q_url = f"https://www.baidu.com/s?wd={query}&rn={num}"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
         #print(q_url)
         for item in soup.select(".t a"):
-            link = item["href"]
+            link = item.select_one["href"]
             title = item.text
             search_results.append((title, link))
         
