@@ -107,6 +107,6 @@ if __name__ == "__main__":
     if args.console:
         search_results = search_console()
         for i, result in enumerate(search_results):
-            print(f"{i+1}. {result[0]}: {result[1]}")
+            print(f"{i+1}. {result[0]} :  {result[1]}")
     else:
         webbrowser.get(config['apps'][args.browser.lower()]).open(query_url())
