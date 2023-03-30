@@ -1,7 +1,7 @@
 urls:
   google : "https://www.google.com/search?q="
-  baidu : "https://www.baidu.com/s?wd"
-  duckduckgo : "https://duckduckgo.com/?q="
+  baidu : "https://www.baidu.com/s?wd="
+  duckduckgo : "https://duckduckgo.com/html/?q="
   bing : "https://www.bing.com/search?q="
 
 apps:
