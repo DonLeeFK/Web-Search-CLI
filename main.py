@@ -51,7 +51,7 @@ def search_console():
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"}
     search_results = []
     if engine == 'google':
-        num = args.number+5
+        num = int(args.number)+5
         q_url += f"&num={num}"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
@@ -63,7 +63,7 @@ def search_console():
             title = item.select_one(".yuRUbf a h3").text
             search_results.append((title, link))
     if engine == 'bing':
-        num = args.number+5
+        num = int(args.number)+5
         q_url += f"&count={num}"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
@@ -87,7 +87,7 @@ def search_console():
             search_results.append((title, link))
     
     if engine == 'baidu':
-        num = args.number+5
+        num = int(args.number)+5
         q_url = f"https://www.baidu.com/s?wd={query}&rn={num}"
         res = requests.get(q_url, headers=headers)
         soup = BeautifulSoup(res.text, "html.parser")
